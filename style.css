@@ -1,0 +1,22 @@
+html {
+  background-color: black;
+}
+
+* {
+  font-family: 'Luckiest Guy';
+}
+
+table {
+  width: 100%;
+}
+
+table,
+th,
+td {
+  background-color: #aa99aa;
+  border: 1px solid black;
+  text-align: center;
+  height: 50px;
+  font-size: 25px;
+  letter-spacing: 1px;
+}
