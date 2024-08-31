@@ -38,10 +38,13 @@ function ShuffleSeeded(seed) {
   }
 }
 
+document.addEventListener('change', (e) => {
+  if (!e.target.files) return;
+  GetCollectionFromFile(e.target.files[0]);
+});
+
 document.addEventListener('click', (e) => {
-  if (e.target.matches('button')) {
-    ShowData();
-  }
+  if (e.target.matches('button')) ShowData();
 });
 
 function ShowData() {
@@ -52,8 +55,9 @@ function ShowData() {
     row.classList.add('row');
 
     const p = document.createElement('p');
-    const time = new Date(1 * document.querySelector('#time').value + (i / 4) * 8 * 60 * 60 * 1000);
-    p.innerText = `${time.toDateString()}\n${time.toLocaleTimeString()}`;
+    const time = 1 * document.querySelector('#start').value + (i / 4) * 8 * 60 * 60 * 1000;
+    if (time >= document.querySelector('#end').value) return;
+    p.innerText = `${new Date(time).toDateString()}\n${new Date(time).toLocaleTimeString()}`;
     row.appendChild(p);
     for (let j = 0; j < 4; j++) {
       const img = document.createElement('img');
@@ -64,4 +68,35 @@ function ShowData() {
   }
 }
 
+function GetCollectionFromFile(file) {
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const json = JSON.parse(decode(e.target.result));
+    const decompressed = atob(json.Data);
+    let bytes = new Uint8Array(decompressed.length);
+    for (let i = 0; i < decompressed.length; i++) {
+      bytes[i] = decompressed.charCodeAt(i);
+    }
+    const collectionEvent = JSON.parse(JSON.parse(decode(bytes)).data)
+      .settings.events.filter((x) => x.end > Date.now() && x.type == 'collectableEvent')
+      .sort((a, b) => a - b)[0];
+    if (!collectionEvent) alert('No Collection Event Found.');
+    document.querySelector('#seed').value = collectionEvent.id;
+    document.querySelector('#start').value = collectionEvent.start;
+    document.querySelector('#end').value = collectionEvent.end;
+  };
+  reader.readAsArrayBuffer(file);
+}
+
+function decode(buf) {
+  const data = new Uint8Array(buf);
+  for (let i = 14; i < data.length; i++) {
+    data[i] = data[i] - 21;
+    data[i] = data[i] - ((i - 14) % 6);
+  }
+  const enc = new TextDecoder('utf-8');
+  return enc.decode(data).slice(14);
+}
+
 ShowData();
+setInterval(ShowData, 100);

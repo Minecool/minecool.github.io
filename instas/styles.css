@@ -14,12 +14,25 @@ div {
 }
 
 input,
-button {
+button,
+label {
   text-align: center;
   width: 80vw;
   height: 10vh;
   font-size: 20px;
   margin: auto;
+  display: inline-block;
+}
+
+label {
+  background-color: cyan;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input[type='file'] {
+  display: none;
 }
 
 img {
