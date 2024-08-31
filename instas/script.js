@@ -5,7 +5,8 @@ if (SetSeed && SetStart && SetEnd) {
   document.querySelector('#seed').value = SetSeed;
   document.querySelector('#start').value = SetStart;
   document.querySelector('#end').value = SetEnd;
-} else {
+}
+if (new URLSearchParams(window.location.search).get('dev')) {
   document.querySelector('#inputs').style.display = 'block';
   setInterval(ShowData, 100);
 }

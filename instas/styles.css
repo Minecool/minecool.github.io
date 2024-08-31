@@ -14,18 +14,14 @@ div {
 }
 
 input,
-label {
+label,
+button {
   text-align: center;
   width: 80vw;
   height: 10vh;
   font-size: 20px;
   margin: auto;
   display: inline-block;
-}
-
-button {
-  padding: 20px;
-  width: 100vw;
 }
 
 label {
