@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: black;
+}
+
+div {
+  text-align: center;
+}
+
+input,
+button {
+  text-align: center;
+  width: 80vw;
+  height: 10vh;
+  font-size: 20px;
+  margin: auto;
+}
+
+img {
+  width: 10vw;
+}
+
+p {
+  font-size: 40px;
+  color: yellow;
+  display: inline-block;
+}
+
+.row {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
