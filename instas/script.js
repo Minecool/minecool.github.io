@@ -7,6 +7,7 @@ if (SetSeed && SetStart && SetEnd) {
   document.querySelector('#end').value = SetEnd;
 } else {
   document.querySelector('#inputs').style.display = 'block';
+  setInterval(ShowData, 100);
 }
 
 function i32(str) {
@@ -114,7 +115,4 @@ function decode(buf) {
   return enc.decode(data).slice(14);
 }
 
-function Share() {}
-
 ShowData();
-setInterval(ShowData, 100);

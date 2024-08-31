@@ -25,7 +25,7 @@ label {
 
 button {
   padding: 20px;
-  position: fixed;
+  width: 100vw;
 }
 
 label {
@@ -44,9 +44,15 @@ img {
 }
 
 p {
-  font-size: 40px;
+  font-size: 30px;
   color: yellow;
   display: inline-block;
+}
+
+@media screen and (max-aspect-ratio: 1/1) {
+  p {
+    font-size: 10px;
+  }
 }
 
 .row {
