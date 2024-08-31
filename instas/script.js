@@ -41,6 +41,7 @@ function ShuffleSeeded(seed) {
 document.addEventListener('change', (e) => {
   if (!e.target.files) return;
   GetCollectionFromFile(e.target.files[0]);
+  e.target.value = null;
 });
 
 document.addEventListener('click', (e) => {
