@@ -62,7 +62,7 @@ function ShowData() {
     row.appendChild(p);
     for (let j = 0; j < 4; j++) {
       const img = document.createElement('img');
-      img.src = `./images/000-${cycle[(i + j) % 24]}Insta.png`;
+      img.src = `./images/000-${cycle[(i + j) % cycle.length]}Insta.png`;
       row.appendChild(img);
       document.querySelector('#cycle').appendChild(row);
     }
@@ -79,12 +79,12 @@ function GetCollectionFromFile(file) {
       bytes[i] = decompressed.charCodeAt(i);
     }
     const collectionEvent = JSON.parse(JSON.parse(decode(bytes)).data)
-      .settings.events.filter((x) => x.end > Date.now() && x.type == 'collectableEvent')
-      .sort((a, b) => a - b)[0];
-    if (!collectionEvent) alert('No Collection Event Found.');
-    document.querySelector('#seed').value = collectionEvent.id;
-    document.querySelector('#start').value = collectionEvent.start;
-    document.querySelector('#end').value = collectionEvent.end;
+      .settings.events.filter((x) => x.type == 'collectableEvent')
+      .sort((a, b) => b.start - a.start);
+    if (!collectionEvent.length) alert('No Collection Event Found.');
+    document.querySelector('#seed').value = collectionEvent[0].id;
+    document.querySelector('#start').value = collectionEvent[0].start;
+    document.querySelector('#end').value = collectionEvent[0].end;
   };
   reader.readAsArrayBuffer(file);
 }
