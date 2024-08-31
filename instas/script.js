@@ -40,22 +40,28 @@ function ShuffleSeeded(seed) {
 
 document.addEventListener('click', (e) => {
   if (e.target.matches('button')) {
-    document.querySelector('#cycle').innerHTML = '';
-    const cycle = ShuffleSeeded(GetSeed(document.querySelector('#seed').value));
-    for (let i = 0; i < cycle.length * 30; i += 4) {
-      const row = document.createElement('div');
-      row.classList.add('row');
-
-      const p = document.createElement('p');
-      const time = new Date(1 * document.querySelector('#time').value + (i / 4) * 8 * 60 * 60 * 1000);
-      p.innerText = `${time.toDateString()}\n${time.toLocaleTimeString()}`;
-      row.appendChild(p);
-      for (let j = 0; j < 4; j++) {
-        const img = document.createElement('img');
-        img.src = `./images/000-${cycle[(i + j) % 24]}Insta.png`;
-        row.appendChild(img);
-        document.querySelector('#cycle').appendChild(row);
-      }
-    }
+    ShowData();
   }
 });
+
+function ShowData() {
+  document.querySelector('#cycle').innerHTML = '';
+  const cycle = ShuffleSeeded(GetSeed(document.querySelector('#seed').value));
+  for (let i = 0; i < cycle.length * 30; i += 4) {
+    const row = document.createElement('div');
+    row.classList.add('row');
+
+    const p = document.createElement('p');
+    const time = new Date(1 * document.querySelector('#time').value + (i / 4) * 8 * 60 * 60 * 1000);
+    p.innerText = `${time.toDateString()}\n${time.toLocaleTimeString()}`;
+    row.appendChild(p);
+    for (let j = 0; j < 4; j++) {
+      const img = document.createElement('img');
+      img.src = `./images/000-${cycle[(i + j) % 24]}Insta.png`;
+      row.appendChild(img);
+      document.querySelector('#cycle').appendChild(row);
+    }
+  }
+}
+
+ShowData();
