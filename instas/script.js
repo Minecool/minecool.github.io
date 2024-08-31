@@ -1,3 +1,14 @@
+const SetSeed = new URLSearchParams(window.location.search).get('seed');
+const SetStart = new URLSearchParams(window.location.search).get('start');
+const SetEnd = new URLSearchParams(window.location.search).get('end');
+if (SetSeed && SetStart && SetEnd) {
+  document.querySelector('#seed').value = SetSeed;
+  document.querySelector('#start').value = SetStart;
+  document.querySelector('#end').value = SetEnd;
+} else {
+  document.querySelector('#inputs').style.display = 'block';
+}
+
 function i32(str) {
   let result = 0;
   for (let i = 0; i < str.length; i++) {
@@ -45,7 +56,11 @@ document.addEventListener('change', (e) => {
 });
 
 document.addEventListener('click', (e) => {
-  if (e.target.matches('button')) ShowData();
+  if (e.target.matches('button')) {
+    const copyText = `${window.location.origin}${window.location.pathname}?seed=${document.querySelector('#seed').value}&start=${document.querySelector('#start').value}&end=${document.querySelector('#end').value}`;
+    navigator.clipboard.writeText(copyText);
+    alert('Copied the link to your clipboard:\n' + copyText);
+  }
 });
 
 function ShowData() {
@@ -98,6 +113,8 @@ function decode(buf) {
   const enc = new TextDecoder('utf-8');
   return enc.decode(data).slice(14);
 }
+
+function Share() {}
 
 ShowData();
 setInterval(ShowData, 100);

@@ -8,15 +8,15 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-    <div>
-      <input id="seed" placeholder="Seed" autocomplete="off" />
-      <input id="start" placeholder="Start Time (epoch)" autocomplete="off" />
-      <input id="end" placeholder="End Time (epoch)" autocomplete="off" />
+    <button>Share State</button>
+    <div id="inputs">
+      <input id="seed" placeholder="Seed" />
+      <input id="start" placeholder="Start Time (epoch)" />
+      <input id="end" placeholder="End Time (epoch)" />
       <label>
         <input type="file" accept=".json-PRODUCTION" />
         Load Collection Event from Game Cache
       </label>
-      <!-- <button>Refresh</button> -->
     </div>
     <div id="cycle"></div>
   </body>

@@ -14,7 +14,6 @@ div {
 }
 
 input,
-button,
 label {
   text-align: center;
   width: 80vw;
@@ -22,6 +21,11 @@ label {
   font-size: 20px;
   margin: auto;
   display: inline-block;
+}
+
+button {
+  padding: 20px;
+  position: fixed;
 }
 
 label {
@@ -50,4 +54,8 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+#inputs {
+  display: none;
 }
