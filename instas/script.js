@@ -39,7 +39,7 @@ function NextDouble(seed) {
 }
 
 function ShuffleSeeded(seed) {
-  const list = ['Alchemist', 'BananaFarm', 'BombShooter', 'BoomerangMonkey', 'DartMonkey', 'Druid', 'GlueGunner', 'HeliPilot', 'IceMonkey', 'MonkeyAce', 'MonkeyBuccaneer', 'MonkeySub', 'MonkeyVillage', 'NinjaMonkey', 'SniperMonkey', 'SpikeFactory', 'SuperMonkey', 'TackShooter', 'WizardMonkey', 'MortarMonkey', 'EngineerMonkey', 'DartlingGunner', 'BeastHandler', 'Mermonkey'];
+  const list = ['Alchemist', 'BananaFarm', 'BombShooter', 'BoomerangMonkey', 'Druid', 'GlueGunner', 'HeliPilot', 'IceMonkey', 'MonkeyAce', 'MonkeyBuccaneer', 'MonkeySub', 'MonkeyVillage', 'NinjaMonkey', 'SniperMonkey', 'SpikeFactory', 'SuperMonkey', 'TackShooter', 'WizardMonkey', 'MortarMonkey', 'EngineerMonkey', 'DartlingGunner', 'BeastHandler', 'Mermonkey'];
   currentSeed = seed;
   const length = list.length;
   let idx_2 = list.length;
