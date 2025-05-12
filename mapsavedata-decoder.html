@@ -33,8 +33,7 @@
         document.querySelector('#output').value = '';
         const file = e.target.files[0];
         const buffer = await file.arrayBuffer();
-        const bytes = new Uint8Array(buffer);
-        const compressed = bytes.subarray(44);
+        const compressed = buffer.slice(44);
         const decompressed = pako.inflate(compressed);
         const json = new TextDecoder('utf-8').decode(decompressed);
         const pretty = JSON.stringify(JSON.parse(json), null, 2);
